@@ -1,0 +1,7 @@
+interface:
+  display_name: "Best Human UI"
+  short_description: "Sociomedia SHIGをUI設計とレビューへ適用"
+  default_prompt: "$best-human-ui を使って、このUIを関連するSHIG原則に基づいて設計またはレビューしてください。"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,4 @@
+interface:
+  display_name: "UXモンキーテスト"
+  short_description: "WebアプリのUX・画面遷移をモンキーテストで検証"
+  default_prompt: "対象URLに対してモンキーテストを実行し、UXと画面遷移のレポートを作成して"

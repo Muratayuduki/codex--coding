@@ -1,0 +1,250 @@
+# config.toml
+
+model = "gpt-5.6-sol"
+model_verbosity = "low"
+model_reasoning_effort = "max"
+hide_agent_reasoning = true
+suppress_unstable_features_warning = true
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+# Codex Desktopに同梱された、このPCのWindows通知プログラム。
+notify = ["C:\\Users\\yuzup\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\f1bf3cd3a5929acd\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe", "turn-ended"]
+personality = "pragmatic"
+
+tools.web_search = true
+service_tier = "default"
+plan_mode_reasoning_effort = "max"
+# [tools.web_search]
+# enabled = true
+
+[sandbox_workspace_write]
+network_access = true
+
+[mcp_servers.chrome-devtools]
+command = "npx"
+args = ["chrome-devtools-mcp@latest"]
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+
+# Figma MCP はローカルの Figma MCP サーバー起動時だけ有効化する。
+# 再有効化: codex mcp add figma -- npx -y mcp-remote http://127.0.0.1:3845/sse
+# [mcp_servers.figma]
+# command = "npx"
+# args = ["-y", "mcp-remote", "http://127.0.0.1:3845/sse"]
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+[mcp_servers.node_repl]
+args = []
+command = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node_repl.exe'
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node_modules'
+NODE_REPL_NODE_PATH = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node.exe'
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\yuzup\.codex;C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node_modules'
+CODEX_HOME = 'C:\Users\yuzup\.codex'
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "e7f98a8ce324234ed7f3be8fa39ba54b26e2e8fc79feed2470dcd0871af4a5b3"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.803.41515"
+SKY_CUA_NATIVE_PIPE = "1"
+SKY_CUA_NATIVE_PIPE_DIRECTORY = '\\.\pipe\codex-computer-use-2abebf51-6ea4-45ea-8b22-7490e596fb9e'
+CODEX_CLI_PATH = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\bin\cfac6bda2d141e07\codex.exe'
+
+# Notion MCP は OAuth ログイン済みで使うときだけ有効化する。
+# 再有効化: codex mcp add notion --url https://mcp.notion.com/mcp
+# 認証: codex mcp login notion
+# [mcp_servers.notion]
+# url = "https://mcp.notion.com/mcp"
+
+# ===== 信頼済みプロジェクト =====
+[projects.'C:\vscode']
+trust_level = "trusted"
+
+[projects.'C:\vscode\codex-config']
+trust_level = "trusted"
+
+[projects.'C:\vscode\portfolio_like']
+trust_level = "trusted"
+
+[projects.'C:\vscode\sagi_keikoku']
+trust_level = "trusted"
+
+[projects.'C:\vscode\SpendOps_Dashboard']
+trust_level = "trusted"
+
+[projects.'C:\vscode\internship-2026-team-a']
+trust_level = "trusted"
+
+[projects.'c:\vscode\個人作成_log\mail-sort-android']
+trust_level = "trusted"
+
+[projects.'c:\vscode\time-management-android']
+trust_level = "trusted"
+
+[notice]
+hide_gpt5_1_migration_prompt = true
+"hide_gpt-5.1-codex-max_migration_prompt" = true
+hide_full_access_warning = true
+hide_rate_limit_model_nudge = true
+fast_default_opt_out = true
+
+[notice.model_migrations]
+"gpt-5.1-codex-max" = "gpt-5.2-codex"
+"gpt-5.3-codex" = "gpt-5.5"
+"gpt-5.4" = "gpt-5.5"
+
+[features]
+multi_agent = true
+goals = true
+hooks = true
+realtime_conversation = true
+default_mode_request_user_input = true
+memories = true
+js_repl = false
+
+[plugins."github@openai-curated"]
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."notion@openai-curated"]
+# Notion プラグインを使う場合は true に戻す。
+enabled = false
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."pm-toolkit@pm-skills"]
+enabled = false
+
+[plugins."pm-product-strategy@pm-skills"]
+enabled = true
+
+[plugins."pm-product-discovery@pm-skills"]
+enabled = true
+
+[plugins."pm-market-research@pm-skills"]
+enabled = true
+
+[plugins."pm-data-analytics@pm-skills"]
+enabled = false
+
+[plugins."pm-marketing-growth@pm-skills"]
+enabled = true
+
+[plugins."pm-go-to-market@pm-skills"]
+enabled = true
+
+[plugins."pm-execution@pm-skills"]
+enabled = false
+
+[plugins."pm-ai-shipping@pm-skills"]
+enabled = false
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+"gpt-5.6-sol" = 4
+
+[[hooks.PreToolUse]]
+matcher = "^(Bash|shell_command|apply_patch)$"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = '/usr/bin/python3 "$HOME/.codex/hooks/codex_env_guard.py" pre-tool-use'
+commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python311\python.exe C:\vscode\codex-config\hooks\codex_env_guard.py pre-tool-use'
+timeout = 10
+statusMessage = "checking env files"
+
+[[hooks.UserPromptSubmit]]
+
+[[hooks.UserPromptSubmit.hooks]]
+type = "command"
+command = '/usr/bin/python3 "$HOME/.codex/hooks/codex_readme_guard.py" start'
+commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python311\python.exe C:\vscode\codex-config\hooks\codex_readme_guard.py start'
+timeout = 10
+statusMessage = "recording README baseline"
+
+[[hooks.Stop]]
+
+[[hooks.Stop.hooks]]
+type = "command"
+command = '/usr/bin/python3 "$HOME/.codex/hooks/codex_memo_guard.py" stop'
+commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python311\python.exe C:\vscode\codex-config\hooks\codex_memo_guard.py stop'
+timeout = 10
+statusMessage = "checking README and queueing memo"
+
+[hooks.state]
+
+[hooks.state.'C:\Users\yuzup\.codex\config.toml:pre_tool_use:0:0']
+trusted_hash = "sha256:c4607a4f62d550b5e8ef881f469c5e266d93aad8b964100149d4685ce2e8bd1a"
+
+[hooks.state.'C:\Users\yuzup\.codex\config.toml:user_prompt_submit:0:0']
+trusted_hash = "sha256:ca1a58e62fe623bd3f8b2a138af7f295f5b34b648089f89df1d2cfc9e4a7cab6"
+
+[hooks.state.'C:\Users\yuzup\.codex\config.toml:stop:0:0']
+trusted_hash = "sha256:3c68b09122c3fe544e90268a5be026e364f16b8585c2cfd6a8dd1da63d8cc4b8"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-08-12T20:22:08Z"
+source_type = "local"
+source = '\\?\C:\Users\yuzup\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[marketplaces.openai-bundled]
+last_updated = "2026-08-12T15:45:54Z"
+source_type = "local"
+source = '\\?\C:\Users\yuzup\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[marketplaces.pm-skills]
+last_updated = "2026-08-09T22:30:37Z"
+last_revision = "18468a95b427e70e258b51389796367c6f684e7d"
+source_type = "git"
+source = "https://github.com/phuryn/pm-skills.git"
+
+[agents]
+max_concurrent_threads_per_session = 3
+
+[desktop]
+followUpQueueMode = "queue"
+conversationDetailMode = "STEPS_COMMANDS"
+
+[windows]
+sandbox = "elevated"
+
+[memories]
+generate_memories = true
+use_memories = true
+
+[shell_environment_policy.set]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "e7f98a8ce324234ed7f3be8fa39ba54b26e2e8fc79feed2470dcd0871af4a5b3"
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\yuzup\.codex;C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node_modules'

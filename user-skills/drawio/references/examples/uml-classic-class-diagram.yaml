@@ -1,0 +1,65 @@
+meta:
+  profile: engineering-review
+  theme: uml-classic
+  source: generated
+  layout: horizontal
+  routing: orthogonal
+  title: Order Management UML
+  description: Classic UML class diagram with Astah-like styling.
+
+nodes:
+  - id: customer
+    label: Customer
+    type: umlClass
+    position: { x: 120, y: 120 }
+    attributes:
+      - "+ id: String"
+      - "+ name: String"
+    operations:
+      - "+ placeOrder(): Order"
+
+  - id: order
+    label: Order
+    type: umlClass
+    position: { x: 360, y: 120 }
+    attributes:
+      - "+ no: String"
+      - "+ status: OrderStatus"
+    operations:
+      - "+ submit(): void"
+
+  - id: orderLine
+    label: OrderLine
+    type: umlClass
+    position: { x: 600, y: 120 }
+    attributes:
+      - "+ qty: int"
+      - "+ unitPrice: Money"
+    operations:
+      - "+ subtotal(): Money"
+
+  - id: product
+    label: Product
+    type: umlClass
+    position: { x: 600, y: 320 }
+    attributes:
+      - "+ sku: String"
+      - "+ price: Money"
+    operations:
+      - "+ changePrice(price): void"
+
+edges:
+  - from: customer
+    to: order
+    type: association
+    label: places
+
+  - from: order
+    to: orderLine
+    type: composition
+    label: contains
+
+  - from: orderLine
+    to: product
+    type: association
+    label: references

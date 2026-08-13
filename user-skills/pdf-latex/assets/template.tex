@@ -1,0 +1,268 @@
+% Non-official Tetsuryoku-style study handout template.
+% Article: ３秒でできる鉄緑っぽいプリント作成（非公式）
+% Author: KKTeX
+% URL: https://qiita.com/KKTeX/items/559d524eeb51a3528051
+% The source article is explicitly non-official.
+%
+% Portions of the box design are inspired by ascolorbox:
+% https://github.com/yasunari/ascolorbox
+%
+% MIT License
+%
+% Copyright (c) 2019 Atsutoshi Sato & Yasunari Yoshida
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+
+\documentclass[paper=b5j, fontsize=8pt, fleqn, twoside]{jlreq}
+
+\usepackage{
+  luatexja,
+  luwa-ul,
+  KKsymbols,
+  keisennote,
+  multicol,
+  amsmath, amssymb,
+  fancyhdr, enumitem,
+  xparse,
+  xurl,
+  graphicx
+}
+\usepackage[tikz]{multicolrule}
+\SetMCRule{line-style=dense-solid-circles, width=0.8pt}
+\usepackage[most]{tcolorbox}
+\usepackage{calc, varwidth}
+
+\makeatletter
+\def\ascb@textgt#1{\textgt{#1}}
+\def\ascb@gtfamily{\gtfamily}
+\def\ascb@zw#1#2{#1\zw}
+\newdimen\ascb@parindent@dimen
+\ascb@parindent@dimen=\zw
+\newcommand{\ascb@parindent}[1]{%
+  \setlength{\parindent}{#1}\relax%
+}
+
+\DeclareTColorBox{simple}{ o m O{.5} O{} }%
+{empty, left=2mm, right=2mm, top=-1mm,
+attach boxed title to top left={xshift=\ascb@zw{1.2}{11pt}},
+boxed title style={empty,left=-.5mm,right=-.5mm},
+colframe=black, coltitle=black, coltext=black, breakable,
+before upper={\ascb@parindent{\ascb@parindent@dimen}},
+underlay unbroken={\draw[black,line width=#3pt](title.east) -- (title.east-|frame.east) -- (frame.south east) -- (frame.south west) -- (title.west-|frame.west) -- (title.west);},
+underlay first={\draw[black,line width=#3pt](title.east) -- (title.east-|frame.east) -- (frame.south east);
+\draw[black,line width=#3pt] (frame.south west) -- (title.west-|frame.west) -- (title.west);},
+underlay middle={\draw[black,line width=#3pt](frame.north east) -- (frame.south east);
+\draw[black,line width=#3pt](frame.south west) -- (frame.north west);},
+underlay last={\draw[black,line width=#3pt](frame.north east) -- (frame.south east) -- (frame.south west) -- (frame.north west);},
+fonttitle=\ascb@gtfamily, IfValueTF={#1}{title=【#2】〈#1〉}{title=【#2】}, #4}
+
+\newlength{\len@ptbs@kk@D}
+\newlength{\lenn@ptbs@kk@D}
+\newlength{\myfontsize@ptbs@kk@D}
+\newcommand{\titlelength@ptbs@kk@D}[1]{%
+  \setlength{\myfontsize@ptbs@kk@D}{\f@size pt}
+  \def\titletext@ptbs@D{\gtfamily\normalsize\selectfont#1}%
+  \settowidth{\lenn@ptbs@kk@D}{\titletext@ptbs@D}%
+  \setlength{\len@ptbs@kk@D}{\linewidth}%
+  \addtolength{\len@ptbs@kk@D}{-\lenn@ptbs@kk@D}%
+  \addtolength{\len@ptbs@kk@D}{-.3em}%
+  \addtolength{\len@ptbs@kk@D}{-1pt}%
+  \addtolength{\len@ptbs@kk@D}{4mm}%
+}
+
+\DeclareTColorBox{ptbs}{ m O{\phantom{A}} O{} }
+{enhanced, breakable, boxsep=0mm, lefttitle=1.5mm,
+arc=.5mm, bottom=2mm, top=2mm, leftupper=4mm, rightupper=4mm,
+colbacktitle=black!100!white, colframe=black!100!white,
+coltitle=white, colback=black!10!white, boxrule=1pt,
+lefttitle=.3em,
+before upper={\ascb@parindent{\ascb@parindent@dimen}},
+fonttitle=\gtfamily\normalsize,
+fontupper=\gtfamily\normalsize,
+title={\titlelength@ptbs@kk@D{#1}#1\kern.3\zw\kern1pt},
+after title={%
+  \tcbox[on line, boxsep=.25\myfontsize@ptbs@kk@D, boxrule=0pt,
+  top=.1\myfontsize@ptbs@kk@D, bottom=.1\myfontsize@ptbs@kk@D,
+  left=.5mm, right=.5mm, width=\len@ptbs@kk@D,
+  colback=black!30!white, arc=.5mm]
+  {\raisebox{.2ex}{\parbox{\len@ptbs@kk@D-.5\myfontsize@ptbs@kk@D-1mm}{\renewcommand{\baselinestretch}{.5}\selectfont#2}}}%
+}, #3}
+
+\DeclareTColorBox{keypointbox}{ O{要点} }%
+{enhanced, breakable, arc=.5mm, boxrule=.8pt,
+colbacktitle=black!100!white, colframe=black!100!white,
+coltitle=white, colback=black!8!white,
+fonttitle=\gtfamily\normalsize, fontupper=\gtfamily\normalsize,
+left=3mm, right=3mm, top=1.5mm, bottom=1.5mm,
+before skip=1mm, after skip=1.5mm,
+title={#1}}
+
+\DeclareTColorBox{ascolorbox4A}{ o m O{3} O{}}%
+{enhanced, colback=white, colframe=white,
+attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2},
+varwidth boxed title=0.85\linewidth, coltitle=black,
+fonttitle=\ascb@gtfamily,
+before skip=.5mm, after skip=.8mm,
+before upper={\ascb@parindent{\ascb@parindent@dimen}},
+enlarge top by=2mm, enlarge bottom by=2mm, breakable, sharp corners,
+boxed title style={colback=white,left=-.6em,right=-.6em},
+borderline={.75pt}{#3pt}{black,dotted},
+underlay unbroken={\draw[black,line width=.5pt]
+  (title.east|-frame.north east)--([xshift=-#3*4pt]frame.north east)
+  arc [start angle=180, end angle=270, radius=#3*4pt]
+  -- ([yshift=#3*4pt]frame.south east)
+  arc [start angle=90, end angle=180, radius=#3*4pt]
+  -- ([xshift=#3*4pt]frame.south west)
+  arc [start angle=0, end angle=90, radius=#3*4pt]
+  -- ([yshift=-#3*4pt]frame.north west)
+  arc [start angle=270, end angle=360, radius=#3*4pt]
+  -- (frame.north west-|title.west);
+  \filldraw[fill=gray,draw=gray](frame.north east) -- ++(0,-#3*3pt) arc [start angle=270, end angle=180, radius=#3*3pt] -- cycle;
+  \filldraw[fill=gray,draw=gray](frame.north west) -- ++(#3*3pt,0) arc [start angle=0, end angle=-90, radius=#3*3pt] -- cycle;
+  \filldraw[fill=gray,draw=gray](frame.south west) -- ++(0,#3*3pt) arc [start angle=90, end angle=0, radius=#3*3pt] -- cycle;
+  \filldraw[fill=gray,draw=gray](frame.south east) -- ++(-#3*3pt,0) arc [start angle=180, end angle=90, radius=#3*3pt] -- cycle;},
+underlay first={\draw[black,line width=.5pt]
+  (title.east|-frame.north east)--([xshift=-#3*4pt]frame.north east)
+  arc [start angle=180, end angle=270, radius=#3*4pt] -- (frame.south east);
+  \draw[black,line width=.5pt](frame.south west) -- ([yshift=-#3*4pt]frame.north west)
+  arc [start angle=270, end angle=360, radius=#3*4pt] -- (frame.north west-|title.west);
+  \filldraw[fill=gray,draw=gray](frame.north east) -- ++(0,-#3*3pt) arc [start angle=270, end angle=180, radius=#3*3pt] -- cycle;
+  \filldraw[fill=gray,draw=gray](frame.north west) -- ++(#3*3pt,0) arc [start angle=0, end angle=-90, radius=#3*3pt] -- cycle;},
+underlay middle={\draw[black,line width=.5pt](frame.north east)--(frame.south east);
+  \draw[black,line width=.5pt](frame.south west)--(frame.north west);},
+underlay last={\draw[black,line width=.5pt]
+  (frame.north east) -- ([yshift=#3*4pt]frame.south east)
+  arc [start angle=90, end angle=180, radius=#3*4pt]
+  -- ([xshift=#3*4pt]frame.south west)
+  arc [start angle=0, end angle=90, radius=#3*4pt] -- (frame.north west);
+  \filldraw[fill=gray,draw=gray](frame.south west) -- ++(0,#3*3pt) arc [start angle=90, end angle=0, radius=#3*3pt] -- cycle;
+  \filldraw[fill=gray,draw=gray](frame.south east) -- ++(-#3*3pt,0) arc [start angle=180, end angle=90, radius=#3*3pt] -- cycle;},
+IfValueTF={#1}{title=【#2】〈#1〉}{title=【#2】},#4}
+
+\tcbset{ascbox@ascolorbox/.style={after skip=1.5mm, before skip=3mm},
+ascboxsizeset@ascolorbox/.style={top=0mm,bottom=0mm,right=-1mm,left=2mm,},
+titleunderline@ascolorbox/.style={underlay pre={\draw[very thick,draw=gray] ([yshift=.7mm,xshift=3mm]frame.south west) -- ([yshift=.7mm]frame.south east);}}}
+\DeclareTCBox{\ascboxZ}{O{dart} s O{.6} s }%
+{empty,ascbox@ascolorbox,ascboxsizeset@ascolorbox,
+IfBooleanTF={#4}{} {titleunderline@ascolorbox},
+IfBooleanTF={#2}
+{underlay={\node[#1,thick,draw=black!40!white,fill=black!70!white,draw,inner sep=#3mm] at (frame.west) {};}}
+{underlay={\node[#1,thick,draw=black!70!white,fill=black!40!white,draw,inner sep=#3mm] at (frame.west) {};}}%
+}
+
+\DeclareUrlCommand\code{\urlstyle{tt}\footnotesize}
+
+\newcommand{\diagramcaption@TETSUMANE}[1]{%
+  \if\relax\detokenize{#1}\relax%
+  \else%
+    \par\vspace{.35\baselineskip}{\gtfamily\footnotesize #1}%
+  \fi%
+}
+
+\NewDocumentCommand{\diagramimage}{ O{} m }{%
+  \par\begin{center}%
+  \includegraphics[width=.96\linewidth,height=.34\textheight,keepaspectratio]{#2}%
+  \diagramcaption@TETSUMANE{#1}%
+  \end{center}\par%
+}
+
+\NewDocumentEnvironment{handoutcolumns}{}%
+{\begin{multicols*}{2}\raggedcolumns}%
+{\end{multicols*}}
+
+\NewDocumentEnvironment{problemcard}{ o m }%
+{\IfNoValueTF{#1}{\begin{ascolorbox4A}{#2}}{\begin{ascolorbox4A}[#1]{#2}}}%
+{\end{ascolorbox4A}}
+
+\NewDocumentEnvironment{keypoints}{ O{要点} }%
+{\begin{keypointbox}[#1]}%
+{\end{keypointbox}}
+
+\NewDocumentEnvironment{solutionblock}{ O{考え方} }%
+{\begin{simple}{#1}}%
+{\end{simple}}
+
+\NewDocumentCommand{\unitsection}{ m }{%
+  \section*{#1}%
+  \vspace{-.4\baselineskip}%
+}
+
+\NewDocumentEnvironment{workedexample}{ o m m }%
+{\IfNoValueTF{#1}{\begin{problemcard}{#2}}{\begin{problemcard}[#1]{#2}}}%
+{\end{problemcard}\begin{keypoints}[確認ポイント]#3\end{keypoints}}
+
+\NewDocumentEnvironment{practiceproblem}{ o m m }%
+{\IfNoValueTF{#1}{\begin{problemcard}{#2}}{\begin{problemcard}[#1]{#2}}}%
+{\end{problemcard}\begin{keypoints}[確認ポイント]#3\end{keypoints}}
+
+\NewDocumentEnvironment{exampledialogue}{}%
+{\begin{solutionblock}[先生と生徒の対話]}%
+{\end{solutionblock}}
+
+\NewDocumentCommand{\teacher}{ m }{%
+  \par\noindent\textgt{先生：}#1\par%
+}
+
+\NewDocumentCommand{\student}{ m }{%
+  \par\noindent\textgt{生徒：}#1\par%
+}
+
+\newcommand{\answerspace}[1][6]{%
+  \par\vspace{.4\baselineskip}%
+  \foreach \n in {1,...,#1}{%
+    \noindent\makebox[\linewidth]{\dotfill}\par\vspace{.65\baselineskip}%
+  }%
+}
+
+\newcommand{\Rhead@TETSUMANE}[1]{\begin{tikzpicture}[remember picture, overlay]
+  \draw[line width=.5pt] ([yshift=-\top@geom@TETSUMANE+3mm, xshift=-\left@geom@TETSUMANE] current page.north east) -- ([yshift=-\top@geom@TETSUMANE+3mm, xshift=\right@geom@TETSUMANE] current page.north west);
+  \node[anchor=east,yshift=-\top@geom@TETSUMANE+6mm, xshift=-\left@geom@TETSUMANE] at (current page.north east) {\footnotesize #1};
+  \draw[line width=.5pt] ([yshift=\bottom@geom@TETSUMANE-3mm, xshift=-\left@geom@TETSUMANE] current page.south east) -- ([yshift=\bottom@geom@TETSUMANE-3mm, xshift=\right@geom@TETSUMANE] current page.south west);
+  \node[anchor=center] at ([yshift=\bottom@geom@TETSUMANE-6mm, xshift=0.5*(-\left@geom@TETSUMANE+\right@geom@TETSUMANE)]current page.south) {\footnotesize\gtfamily\symbol{"2015}\hspace*{1ex}\thepage\hspace*{1ex}\symbol{"2015}};
+\end{tikzpicture}}
+
+\newcommand{\Lhead@TETSUMANE}[1]{\begin{tikzpicture}[remember picture, overlay]
+  \draw[line width=.5pt] ([yshift=-\top@geom@TETSUMANE+3mm, xshift=\left@geom@TETSUMANE] current page.north west) -- ([yshift=-\top@geom@TETSUMANE+3mm, xshift=-\right@geom@TETSUMANE] current page.north east);
+  \node[anchor=west,yshift=-\top@geom@TETSUMANE+6mm, xshift=\left@geom@TETSUMANE] at (current page.north west){\footnotesize #1};
+  \draw[line width=.5pt] ([yshift=\bottom@geom@TETSUMANE-3mm, xshift=-\right@geom@TETSUMANE] current page.south east) -- ([yshift=\bottom@geom@TETSUMANE-3mm, xshift=\left@geom@TETSUMANE] current page.south west);
+  \node[anchor=center] at ([yshift=\bottom@geom@TETSUMANE-6mm,xshift=0.5*(\left@geom@TETSUMANE-\right@geom@TETSUMANE)]current page.south) {\footnotesize\gtfamily\symbol{"2015}\hspace*{1ex}\thepage\hspace*{1ex}\symbol{"2015}};
+\end{tikzpicture}}
+
+\newdimen\top@geom@TETSUMANE
+\newdimen\bottom@geom@TETSUMANE
+\newdimen\left@geom@TETSUMANE
+\newdimen\right@geom@TETSUMANE
+\top@geom@TETSUMANE=20mm
+\bottom@geom@TETSUMANE=20mm
+\left@geom@TETSUMANE=16mm
+\right@geom@TETSUMANE=16mm
+\usepackage[top=\top@geom@TETSUMANE,bottom=\bottom@geom@TETSUMANE,left=\left@geom@TETSUMANE,right=\right@geom@TETSUMANE]{geometry}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand{\headrule}{}
+\fancyhead{}
+\fancyhead[ER]{\Rhead@TETSUMANE{\gtfamily __TITLE_RIGHT__}}
+\fancyhead[OL]{\Lhead@TETSUMANE{\gtfamily __TITLE_LEFT__}}
+\fancyfoot{}
+\makeatother
+
+\begin{document}
+__DOCUMENT_BODY__
+
+\end{document}

@@ -1,0 +1,48 @@
+/*
+
+# Git-managed Codex configuration.
+!/.gitignore
+!/.gitattributes
+!/AGENTS.md
+!/README.md
+!/bootstrap.sh
+!/config.toml
+
+!/agents/
+!/agents/**
+!/git-hooks/
+!/git-hooks/**
+!/hooks/
+!/hooks/**
+!/rules/
+!/rules/**
+!/tests/
+!/tests/**
+!/user-skills/
+!/user-skills/**
+
+# Generated content inside otherwise tracked trees.
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+**/node_modules/
+**/.DS_Store
+**/*.log
+
+# Secret environment files inside otherwise tracked trees. Templates remain trackable.
+**/.env*
+!**/.env*.example
+!**/.env*.sample
+!**/.env*.template
+!**/.env*.dist
+**/.dev.vars*
+!**/.dev.vars*.example
+!**/.dev.vars*.sample
+!**/.dev.vars*.template
+!**/.dev.vars*.dist
+
+# Root config remains default-deny, including environment templates.
+/.env*
+/.dev.vars*

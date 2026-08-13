@@ -1,0 +1,264 @@
+{
+  "$schema": "./theme.schema.json",
+  "name": "uml-classic",
+  "displayName": "UML Classic",
+  "description": "Astah-like classic UML styling with white boxes, black strokes, square corners, and plain relationship notation.",
+  "colors": {
+    "primary": "#000000",
+    "primaryLight": "#FFFFFF",
+    "secondary": "#000000",
+    "secondaryLight": "#FFFFFF",
+    "accent": "#000000",
+    "accentLight": "#FFFFFF",
+    "background": "#FFFFFF",
+    "surface": "#FFFFFF",
+    "surfaceAlt": "#FFFFFF",
+    "text": "#000000",
+    "textMuted": "#000000",
+    "textInverse": "#FFFFFF",
+    "border": "#000000",
+    "borderStrong": "#000000",
+    "success": "#000000",
+    "successLight": "#FFFFFF",
+    "warning": "#000000",
+    "warningLight": "#FFFFFF",
+    "error": "#000000",
+    "errorLight": "#FFFFFF",
+    "info": "#000000",
+    "infoLight": "#FFFFFF"
+  },
+  "spacing": {
+    "unit": 8,
+    "scale": {
+      "xs": 4,
+      "sm": 8,
+      "md": 16,
+      "lg": 24,
+      "xl": 32,
+      "2xl": 40,
+      "3xl": 48,
+      "4xl": 64,
+      "5xl": 80
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": "Helvetica, Arial, sans-serif",
+      "monospace": "Courier New, Courier, monospace",
+      "formula": "Helvetica, Arial, sans-serif"
+    },
+    "fontSize": {
+      "xs": 9,
+      "sm": 10,
+      "md": 12,
+      "lg": 13,
+      "xl": 14,
+      "2xl": 16
+    },
+    "fontWeight": {
+      "normal": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    }
+  },
+  "borderRadius": {
+    "none": 0,
+    "sm": 0,
+    "md": 0,
+    "lg": 0,
+    "full": 9999
+  },
+  "shadows": {
+    "none": "none",
+    "sm": "none",
+    "md": "none",
+    "lg": "none"
+  },
+  "node": {
+    "default": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "fontColor": "#000000",
+      "fontSize": 12,
+      "fontFamily": "Helvetica, Arial, sans-serif",
+      "rounded": 0
+    },
+    "umlClass": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "fontColor": "#000000",
+      "fontSize": 12,
+      "rounded": 0
+    },
+    "service": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000",
+      "rounded": 0
+    },
+    "database": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000"
+    },
+    "decision": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000"
+    },
+    "terminal": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000"
+    },
+    "queue": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000"
+    },
+    "user": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000"
+    },
+    "document": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000"
+    },
+    "formula": {
+      "fillColor": "#FFFFFF",
+      "strokeColor": "#000000",
+      "strokeWidth": 1
+    }
+  },
+  "connector": {
+    "primary": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": false,
+      "dashPattern": null,
+      "endArrow": "none",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "association": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": false,
+      "dashPattern": null,
+      "endArrow": "none",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "directedAssociation": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": false,
+      "dashPattern": null,
+      "endArrow": "open",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "aggregation": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": false,
+      "dashPattern": null,
+      "startArrow": "diamond",
+      "startFill": false,
+      "endArrow": "none",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "composition": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": false,
+      "dashPattern": null,
+      "startArrow": "diamond",
+      "startFill": true,
+      "endArrow": "none",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "generalization": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": false,
+      "dashPattern": null,
+      "endArrow": "block",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "realization": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": true,
+      "dashPattern": "6 4",
+      "endArrow": "block",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "dependency": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": true,
+      "dashPattern": "6 4",
+      "endArrow": "open",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "data": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": true,
+      "dashPattern": "6 4",
+      "endArrow": "open",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "optional": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": true,
+      "dashPattern": "2 2",
+      "endArrow": "open",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    },
+    "bidirectional": {
+      "strokeColor": "#000000",
+      "strokeWidth": 1,
+      "dashed": false,
+      "dashPattern": null,
+      "endArrow": "none",
+      "endFill": false,
+      "fontColor": "#000000",
+      "fontSize": 11
+    }
+  },
+  "module": {
+    "fillColor": "#FFFFFF",
+    "strokeColor": "#000000",
+    "strokeWidth": 1,
+    "rounded": 0,
+    "padding": 24,
+    "labelFontSize": 12,
+    "labelFontWeight": 700,
+    "labelFontColor": "#000000",
+    "dashed": false,
+    "dashPattern": "6 4"
+  },
+  "canvas": {
+    "background": "#FFFFFF",
+    "gridSize": 8,
+    "gridColor": "#E5E5E5"
+  }
+}

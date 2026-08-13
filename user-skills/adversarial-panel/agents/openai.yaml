@@ -1,0 +1,7 @@
+interface:
+  display_name: "Adversarial Panel"
+  short_description: "複数のCodexモデルで独立検証と敵対的レビューを行う"
+  default_prompt: "$adversarial-panel を使って、この重要な判断を複数のCodexモデルで敵対的に検証してください。"
+
+policy:
+  allow_implicit_invocation: true

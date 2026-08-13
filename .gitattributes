@@ -1,0 +1,3 @@
+# User skills are vendored from multiple sources. Preserve their upstream
+# whitespace instead of rewriting them during configuration-only changes.
+user-skills/** -whitespace

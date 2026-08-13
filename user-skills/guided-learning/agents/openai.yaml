@@ -1,0 +1,4 @@
+interface:
+  display_name: "段階学習コーチ"
+  short_description: "レベルデザインの10原則で、学びたくなる道筋を設計する伴走コーチ"
+  default_prompt: "$guided-learning を使って、このテーマを学び続けたくなる道筋を設計し、一歩ずつ伴走してください。"

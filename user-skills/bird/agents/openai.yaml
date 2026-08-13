@@ -1,0 +1,7 @@
+interface:
+  display_name: "bird"
+  short_description: "X/Twitter検索をWeb調査に併用"
+  default_prompt: "Use $bird to add read-only X/Twitter search context to this web research task."
+
+policy:
+  allow_implicit_invocation: true

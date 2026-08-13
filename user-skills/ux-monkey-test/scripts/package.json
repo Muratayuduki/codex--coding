@@ -1,0 +1,8 @@
+{
+  "name": "ux-monkey-test-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "playwright": "1.61.1"
+  }
+}

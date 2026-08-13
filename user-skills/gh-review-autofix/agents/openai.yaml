@@ -1,0 +1,4 @@
+interface:
+  display_name: "GH Review Autofix"
+  short_description: "Judge PR reviews, reply, and apply fixes with gh"
+  default_prompt: "Use $gh-review-autofix to inspect a PR URL, judge review feedback, reply with reasons, and implement accepted fixes."

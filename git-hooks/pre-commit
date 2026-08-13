@@ -1,0 +1,46 @@
+#!/bin/sh
+# global-env-guard-hook
+set -eu
+
+repo_root="$(git rev-parse --show-toplevel)"
+git_common_dir="$(git rev-parse --git-common-dir)"
+case "$0" in
+  */*) hook_path_dir=${0%/*} ;;
+  *) hook_path_dir=. ;;
+esac
+hook_dir="$(CDPATH= cd -- "$hook_path_dir" && pwd -P)"
+env_guard="$hook_dir/../hooks/codex_env_guard.py"
+
+case "$git_common_dir" in
+  /*) local_hook="$git_common_dir/hooks/pre-commit" ;;
+  *) local_hook="$repo_root/$git_common_dir/hooks/pre-commit" ;;
+esac
+
+cd "$repo_root"
+
+if command -v python3 >/dev/null 2>&1 && python3 --version >/dev/null 2>&1; then
+  python_command=python3
+elif command -v python >/dev/null 2>&1 && python --version >/dev/null 2>&1; then
+  python_command=python
+else
+  printf '%s\n' 'pre-commit: Python 3 is required' >&2
+  exit 1
+fi
+
+"$python_command" "$env_guard" pre-commit
+
+if [ -x "$local_hook" ]; then
+  has_readme_freshness_hook=false
+  while IFS= read -r hook_line || [ -n "$hook_line" ]; do
+    case "$hook_line" in
+      *readme-freshness-hook*) has_readme_freshness_hook=true; break ;;
+    esac
+  done < "$local_hook"
+  if [ "$has_readme_freshness_hook" = false ]; then
+    "$local_hook"
+  fi
+fi
+
+# README freshness is checked once by the main-agent Stop hook. Intermediate
+# commits and subagent commits must remain unblocked.
+exit 0

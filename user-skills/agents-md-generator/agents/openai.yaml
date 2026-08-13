@@ -1,0 +1,4 @@
+interface:
+  display_name: "AGENTS.md Generator"
+  short_description: "Repository AGENTS.mdを簡潔に生成・更新する"
+  default_prompt: "Use $agents-md-generator to create or update AGENTS.md for this repository."
