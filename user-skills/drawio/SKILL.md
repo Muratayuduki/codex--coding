@@ -1,8 +1,8 @@
 ---
 name: drawio
-version: "2.2.0"
-description: "Desktop-first Draw.io diagram creation, editing, replication, and conversion (redraw, remake, 重画, 绘图, 画图, 做个图) with a YAML design system supporting 7 themes. Use when creating visual diagrams, drawings, figures, schematics, charts, system architecture diagrams, network diagrams, flowcharts, UML, ER diagrams, sequence diagrams, state machines, org charts, mind maps, cloud infrastructure diagrams, research workflows, paper figures, IEEE-style diagrams, technical roadmaps, or diagrams containing formulas, equations, LaTeX, AsciiMath, MathJax, inline math, block math, 公式, 行内公式, or 行间公式. Academic-paper requests should classify the figure as architecture, roadmap, or workflow, then deliver the editable offline bundle plus SVG by default. Accepts Mermaid, CSV, and YAML input; convert to drawio from mermaid to drawio or any structured source. Default to offline/local generation with `.drawio` + sidecars; use an optional live backend only when browser or inline refinement is genuinely needed."
+description: "Create, edit, reproduce, or convert editable technical diagrams, including cloud and network architecture, flowcharts, UML, academic figures, and formula-heavy diagrams. Use when a diagram or Draw.io conversion is requested."
 metadata:
+  version: "2.2.0"
   category: visual-design
   tags:
     - diagram
@@ -14,7 +14,6 @@ metadata:
     - network-topology
     - uml
     - design-system
-argument-hint: [diagram-description-or-instruction]
 allowed-tools: Read, Write, Bash
 ---
 

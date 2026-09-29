@@ -1,7 +1,6 @@
 ---
 name: "ux-monkey-test"
-description: "WebアプリのUXと画面遷移をモンキーテストで検証する。フロントエンド/UI変更後の動作確認、画面遷移の網羅確認、ランダム操作によるエラー炙り出し、UXレビューが必要なとき、または「モンキーテスト」「monkey test」「画面遷移確認」「UX確認」と指示されたときに使用する。Playwrightで系統的クロールとシード付きランダム操作を実行し、エラー一覧・遷移マップ・スクリーンショット・UX所見のレポートを生成する。"
-compatibility: "Node.js 18+ と npx が必要。初回実行時に scripts/ で npm install と chromium ダウンロードを行う。対象はHTTP(S)で到達可能なWebアプリ。"
+description: "Webアプリのモンキーテストや画面遷移の網羅検証を依頼されたときに、Playwrightで操作経路とエラーを調べる。通常のUI変更確認や静的UXレビューには使用しない。"
 ---
 
 # UXモンキーテスト
