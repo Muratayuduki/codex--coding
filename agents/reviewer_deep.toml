@@ -1,6 +1,6 @@
 name = "reviewer_deep"
 description = "正しさ、回帰、境界条件、安全性を確認する独立レビュー。実装完了後の差分確認に使う。"
-model = "gpt-5.5"
+model = "gpt-6-astra"
 model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 developer_instructions = """
