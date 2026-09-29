@@ -1,15 +1,15 @@
 # config.toml
 
-model = "gpt-5.6-sol"
+model = "gpt-6-sol"
 model_verbosity = "low"
-model_reasoning_effort = "max"
+model_reasoning_effort = "medium"
 hide_agent_reasoning = true
 suppress_unstable_features_warning = true
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 
 # Codex Desktopに同梱された、このPCのWindows通知プログラム。
-notify = ["C:\\Users\\yuzup\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\f1bf3cd3a5929acd\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe", "turn-ended"]
+notify = [ "C:\\Users\\yuzup\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\e7fe122ad3cbcd58\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe", "turn-ended" ]
 personality = "pragmatic"
 
 tools.web_search = true
@@ -40,24 +40,25 @@ url = "https://developers.openai.com/mcp"
 
 [mcp_servers.node_repl]
 args = []
-command = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node_repl.exe'
+command = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\e7fe122ad3cbcd58\bin\node_repl.exe'
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
-NODE_REPL_NODE_MODULE_DIRS = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node_modules'
-NODE_REPL_NODE_PATH = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node.exe'
-NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\yuzup\.codex;C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node_modules'
+NODE_REPL_NODE_MODULE_DIRS = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\e7fe122ad3cbcd58\bin\node_modules'
+NODE_REPL_NODE_PATH = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\e7fe122ad3cbcd58\bin\node.exe'
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\yuzup\.codex;C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\e7fe122ad3cbcd58\bin\node_modules'
 CODEX_HOME = 'C:\Users\yuzup\.codex'
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "e7f98a8ce324234ed7f3be8fa39ba54b26e2e8fc79feed2470dcd0871af4a5b3"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_TINYSKY_ENABLED = "0"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.803.41515"
+BROWSER_USE_CODEX_APP_VERSION = "26.903.71938"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"C:/Users/yuzup/.codex/plugins/cache/openai-bundled/browser/26.903.71938/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
 SKY_CUA_NATIVE_PIPE = "1"
-SKY_CUA_NATIVE_PIPE_DIRECTORY = '\\.\pipe\codex-computer-use-2abebf51-6ea4-45ea-8b22-7490e596fb9e'
-CODEX_CLI_PATH = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\bin\cfac6bda2d141e07\codex.exe'
+SKY_CUA_NATIVE_PIPE_DIRECTORY = '\\.\pipe\codex-computer-use-272b457b-835c-480b-8f3f-e57573ce3620'
+CODEX_CLI_PATH = 'C:\Users\yuzup\AppData\Local\OpenAI\Codex\bin\7ac07f4ce733f89a\codex.exe'
 
 # Notion MCP は OAuth ログイン済みで使うときだけ有効化する。
 # 再有効化: codex mcp add notion --url https://mcp.notion.com/mcp
@@ -181,7 +182,7 @@ matcher = "^(Bash|shell_command|apply_patch)$"
 [[hooks.PreToolUse.hooks]]
 type = "command"
 command = '/usr/bin/python3 "$HOME/.codex/hooks/codex_env_guard.py" pre-tool-use'
-commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python311\python.exe C:\vscode\codex-config\hooks\codex_env_guard.py pre-tool-use'
+commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python312\python.exe C:\vscode\codex-config\hooks\codex_env_guard.py pre-tool-use'
 timeout = 10
 statusMessage = "checking env files"
 
@@ -190,7 +191,7 @@ statusMessage = "checking env files"
 [[hooks.UserPromptSubmit.hooks]]
 type = "command"
 command = '/usr/bin/python3 "$HOME/.codex/hooks/codex_readme_guard.py" start'
-commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python311\python.exe C:\vscode\codex-config\hooks\codex_readme_guard.py start'
+commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python312\python.exe C:\vscode\codex-config\hooks\codex_readme_guard.py start'
 timeout = 10
 statusMessage = "recording README baseline"
 
@@ -199,20 +200,20 @@ statusMessage = "recording README baseline"
 [[hooks.Stop.hooks]]
 type = "command"
 command = '/usr/bin/python3 "$HOME/.codex/hooks/codex_memo_guard.py" stop'
-commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python311\python.exe C:\vscode\codex-config\hooks\codex_memo_guard.py stop'
+commandWindows = 'C:\Users\yuzup\AppData\Local\Programs\Python\Python312\python.exe C:\vscode\codex-config\hooks\codex_memo_guard.py stop'
 timeout = 10
 statusMessage = "checking README and queueing memo"
 
 [hooks.state]
 
 [hooks.state.'C:\Users\yuzup\.codex\config.toml:pre_tool_use:0:0']
-trusted_hash = "sha256:c4607a4f62d550b5e8ef881f469c5e266d93aad8b964100149d4685ce2e8bd1a"
+trusted_hash = "sha256:ef33cf0def3ba224e3cb26a801bfe647f3ec12c2a60847828c37233aa0e24520"
 
 [hooks.state.'C:\Users\yuzup\.codex\config.toml:user_prompt_submit:0:0']
-trusted_hash = "sha256:ca1a58e62fe623bd3f8b2a138af7f295f5b34b648089f89df1d2cfc9e4a7cab6"
+trusted_hash = "sha256:6e8d188f16797f1e1aef4ce894f60d45e49141ffca06402c12b0e73e0570e140"
 
 [hooks.state.'C:\Users\yuzup\.codex\config.toml:stop:0:0']
-trusted_hash = "sha256:3c68b09122c3fe544e90268a5be026e364f16b8585c2cfd6a8dd1da63d8cc4b8"
+trusted_hash = "sha256:9d3a9c8031f44da122f31fe32bd986b4e5e5ad6e2eb3ef224f5998522a629687"
 
 [marketplaces.openai-primary-runtime]
 last_updated = "2026-08-12T20:22:08Z"
@@ -246,5 +247,5 @@ use_memories = true
 
 [shell_environment_policy.set]
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "e7f98a8ce324234ed7f3be8fa39ba54b26e2e8fc79feed2470dcd0871af4a5b3"
-NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\yuzup\.codex;C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\f1bf3cd3a5929acd\bin\node_modules'
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "7ed52dae165c3bc22b6d24f282e2c1fbc87f6949fbbe037767a7418d8f517f01,d0b55a8f9e8e7e9c88421416ea4ce9542c302abf43aa7fc871be4553ea70dd26"
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\yuzup\.codex;C:\Users\yuzup\AppData\Local\OpenAI\Codex\runtimes\cua_node\e7fe122ad3cbcd58\bin\node_modules'

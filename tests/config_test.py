@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 CODEX_HOME = Path(__file__).resolve().parents[1]
-CODEX_COMMAND = "codex.cmd" if os.name == "nt" else "codex"
+CODEX_COMMAND = "codex.exe" if os.name == "nt" else "codex"
 
 
 class CodexConfigTest(unittest.TestCase):
@@ -18,9 +18,9 @@ class CodexConfigTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.config = tomllib.loads((CODEX_HOME / "config.toml").read_text(encoding="utf-8"))
 
-    def test_main_agent_keeps_max_reasoning(self) -> None:
-        self.assertEqual(self.config["model"], "gpt-5.6-sol")
-        self.assertEqual(self.config["model_reasoning_effort"], "max")
+    def test_main_agent_uses_sol_with_medium_reasoning(self) -> None:
+        self.assertEqual(self.config["model"], "gpt-6-sol")
+        self.assertEqual(self.config["model_reasoning_effort"], "medium")
         self.assertEqual(self.config["plan_mode_reasoning_effort"], "max")
 
     def test_codex_accepts_the_live_config_in_strict_mode(self) -> None:
@@ -110,6 +110,7 @@ class CodexConfigTest(unittest.TestCase):
         allowed_env_keys = {
             "node_repl": {
                 "BROWSER_USE_AVAILABLE_BACKENDS",
+                "BROWSER_USE_TINYSKY_ENABLED",
                 "BROWSER_USE_CODEX_APP_BUILD_FLAVOR",
                 "BROWSER_USE_CODEX_APP_VERSION",
                 "CODEX_CLI_PATH",
@@ -119,7 +120,7 @@ class CodexConfigTest(unittest.TestCase):
                 "NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS",
                 "NODE_REPL_NODE_MODULE_DIRS",
                 "NODE_REPL_NODE_PATH",
-                "NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S",
+                "NODE_REPL_TRUSTED_SERVICES",
                 "NODE_REPL_TRUSTED_CODE_PATHS",
                 "SKY_CUA_NATIVE_PIPE",
                 "SKY_CUA_NATIVE_PIPE_DIRECTORY",
