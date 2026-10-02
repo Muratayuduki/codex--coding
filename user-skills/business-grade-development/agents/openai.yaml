@@ -1,0 +1,6 @@
+interface:
+  display_name: "実務向け開発・業務検証"
+  short_description: "業務要件に基づく詳細なテスト計画と境界・運用検証、欠陥修正と再レビュー"
+  default_prompt: "$business-grade-development を使用し、対象業務の必須事項を調査して詳細なテスト計画を作成し、境界・異常系・運用の検証、欠陥修正、再テスト、修正レビューまで実施してください。"
+policy:
+  allow_implicit_invocation: true
